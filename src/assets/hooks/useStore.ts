@@ -9,7 +9,7 @@ const initialState: State = {
     loading: false
 }
 
-function reducer (state: State, action: Action){
+function reducer (state: State, action: Action) {
     const { type } = action
 
     if (type === 'INTERCHANGE_LANGUAGES') {
@@ -49,6 +49,8 @@ function reducer (state: State, action: Action){
             result: action.payload
         }
     }
+
+    return state
 }
 
 export function useStore () {
@@ -60,7 +62,7 @@ export function useStore () {
         loading
     }, dispatch] = useReducer(reducer, initialState)
 
-    const insterchangeLaguages = () => {
+    const interchangeLaguages = () => {
         dispatch ({ type: 'INTERCHANGE_LANGUAGES'})
     }
 
@@ -73,7 +75,7 @@ export function useStore () {
     }
 
     const setFromText = (payload: string) => {
-        dispatch({ types: 'SET_FROM_TESXT', payload})
+        dispatch({ type: 'SET_FROM_TEXT', payload})
     }
 
     const setResult = (payload: string) => {
@@ -86,7 +88,7 @@ export function useStore () {
         fromText,
         result,
         loading,
-        insterchangeLaguages,
+        interchangeLaguages,
         setFromLanguage,
         setToLanguage,
         setFromText,
