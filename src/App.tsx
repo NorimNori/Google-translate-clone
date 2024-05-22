@@ -1,14 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { useStore } from './assets/hooks/useStore';
-import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap'
+import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
 import { AUTO_LANGUAGE } from './assets/constants';
 import { ArrowIcon } from './assets/components/Icons';
 import { LanguageSelector } from './assets/components/LanguageSelector';
 import { SectionType } from './types.d';
+import { TextArea } from './assets/components/TextArea';
 
 function App() {
-    const { fromLanguage, toLanguage, interchangeLaguages, setFromLanguage, setToLanguage } = useStore()
+    const { fromLanguage, toLanguage, interchangeLaguages, setFromLanguage, setToLanguage, fromText, result, setFromText, setResult, loading } = useStore()
 
     return (
         <>
@@ -22,11 +23,10 @@ function App() {
                                 type={SectionType.From}
                                 value={fromLanguage}
                             />
-                            <Form.Control
-                                as='textarea'
-                                placeholder='Introducir texto'
-                                autoFocus
-                                style={{ height:'150px'}}
+                            <TextArea
+                                type={SectionType.From}
+                                value={fromText}
+                                onChange={setFromText}
                             />
                         </Stack>
                     </Col>
@@ -44,10 +44,11 @@ function App() {
                                 value={toLanguage}
                                 onChange={setToLanguage}
                             />
-                            <Form.Control
-                                as='textarea'
-                                placeholder='Traduccion'
-                                style={{ height:'150px'}}
+                            <TextArea
+                                type={SectionType.To}
+                                value={result}
+                                onChange={setResult}
+                                loading={loading}
                             />
                         </Stack>
                     </Col>
