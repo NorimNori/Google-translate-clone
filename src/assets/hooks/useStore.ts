@@ -1,4 +1,4 @@
-import { Action, FromLanguage, Language, State } from "../../types"
+import { type Action, type FromLanguage, type Language, type State } from "../../types"
 import { useReducer } from 'react'
 import { AUTO_LANGUAGE } from "../constants"
 
@@ -37,10 +37,12 @@ function reducer (state: State, action: Action) {
     }
 
     if (type === 'SET_FROM_TEXT') {
+        const loading = action.payload !== ''
+
         return {
             ...state,
-            loading: true,
-            fromTeaxt: action.payload,
+            loading,
+            fromText: action.payload,
             result: ''
         }
     }

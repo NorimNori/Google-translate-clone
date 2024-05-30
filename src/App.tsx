@@ -7,9 +7,23 @@ import { ArrowIcon } from './assets/components/Icons';
 import { LanguageSelector } from './assets/components/LanguageSelector';
 import { SectionType } from './types.d';
 import { TextArea } from './assets/components/TextArea';
+import { useCompletion } from 'ai/react';
 
 function App() {
-    const { fromLanguage, toLanguage, interchangeLaguages, setFromLanguage, setToLanguage, fromText, result, setFromText, setResult, loading } = useStore()
+    const { 
+        fromLanguage, 
+        toLanguage, 
+        interchangeLaguages, 
+        setFromLanguage, 
+        setToLanguage, 
+        fromText, 
+        result, 
+        setFromText, 
+        setResult, 
+        loading
+    } = useStore()
+
+
 
     return (
         <>
@@ -19,7 +33,8 @@ function App() {
                 <Row>
                     <Col>
                         <Stack gap={2}>
-                            <LanguageSelector onChange={setFromLanguage}
+                            <LanguageSelector 
+                                onChange={setFromLanguage}
                                 type={SectionType.From}
                                 value={fromLanguage}
                             />
